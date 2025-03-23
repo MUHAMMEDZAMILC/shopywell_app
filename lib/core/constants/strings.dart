@@ -1,0 +1,10 @@
+const String boardone = 'boardone',
+  boardtwo = 'boardtwo',
+  boardthree = 'boardthree',
+  google= 'google.png',
+  facebook = 'facebooks',
+  apple = 'apple',
+  googleic = 'googleic',
+  startbg = 'startbg.png',
+  appbarlogo = 'appbarlogo.png',
+  draweric = 'drawer';
