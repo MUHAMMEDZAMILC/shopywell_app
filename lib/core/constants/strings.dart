@@ -1,4 +1,5 @@
 const String boardone = 'boardone',
+  rupesssymbol ='₹',
   boardtwo = 'boardtwo',
   boardthree = 'boardthree',
   google= 'google.png',
@@ -8,4 +9,10 @@ const String boardone = 'boardone',
   startbg = 'startbg.png',
   appbarlogo = 'appbarlogo.png',
   draweric = 'drawer',
-  offbg = 'offbg.png';
+  offbg = 'offbg.png',
+  emoji = 'emoji.png',
+  offer = 'offer.png',
+  ldchappal = 'ldchappal.png',
+  yellowrectangle = 'yellowrect',
+  yellowscatter='scatter',
+  hotsummer = 'hotsummer.png';

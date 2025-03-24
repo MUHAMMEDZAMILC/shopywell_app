@@ -23,10 +23,13 @@ class ColorResources {
   static const Color TEXTFEILDFILL = Color(0xFFF3F3F3);
   static const Color TEXTFEILDBORDERLIGHT = Color(0xFFC8C8C8);
   static const Color SIZECHARTRED = Color(0xFFFA7189);
+  static const Color AMTRED = Color(0xFFFE735C);
   static const Color BLACK = Color(0xff0d0005);
   static const Color WHITE = Colors.white;
   static const Color LIGHTGREY = Color(0xFFC4C4C4);
   static const Color CONTAINERBLUE = Color(0xFF4392F9);
+  static const Color CONTAINERLIGHTRED = Color(0xFFFD6E87);
+  static const Color BTNRED = Color(0xFFF40000);
   static const Color TRANSPARENT = Colors.transparent;
 
 

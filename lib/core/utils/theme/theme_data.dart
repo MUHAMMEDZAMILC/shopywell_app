@@ -16,6 +16,13 @@ class MyTheme {
     iconTheme: IconThemeData(color: ColorResources.ICONCOLOR),
     primaryIconTheme: IconThemeData(color: ColorResources.ICONCOLOR),
     hintColor: ColorResources.HINTTEXT,
-   
+    bottomAppBarTheme: const BottomAppBarTheme(
+      color: ColorResources.TRANSPARENT,
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+
+      backgroundColor: ColorResources.TRANSPARENT,
+      
+    ),
   );
 }
