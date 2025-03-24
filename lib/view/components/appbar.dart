@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopywell_app/core/utils/theme/colors.dart';
 import '../../core/helper/pagenavigator.dart';
 import 'apptext.dart';
 
@@ -49,6 +50,7 @@ class ApBarMn extends StatelessWidget implements PreferredSizeWidget {
               },
               child: Icon(
                 CupertinoIcons.left_chevron,
+                color: ColorResources.ICONCOLORSEC,
               ),
             )
           : leading,
@@ -72,6 +74,7 @@ class ApBarMnHmSc extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
         titleSpacing: 10,
+        elevation: 0,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(28))),
         title: titlewidget ?? Text(title ?? ''),

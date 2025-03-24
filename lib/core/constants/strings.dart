@@ -15,4 +15,6 @@ const String boardone = 'boardone',
   ldchappal = 'ldchappal.png',
   yellowrectangle = 'yellowrect',
   yellowscatter='scatter',
+  gotocart = 'gotocart',
+  buynow = 'buynow',
   hotsummer = 'hotsummer.png';

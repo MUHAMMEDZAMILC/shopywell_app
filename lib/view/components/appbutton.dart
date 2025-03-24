@@ -33,7 +33,7 @@ class ApBtn extends StatelessWidget {
     ScreenUtil.init(context);
     return SizedBox(
       width: width ?? ScreenUtil.screenWidth,
-      height: height ?? 55,
+      height: height ?? 50,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -51,7 +51,7 @@ class ApBtn extends StatelessWidget {
                   ),
                   shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ),
@@ -82,7 +82,7 @@ class ApBtn extends StatelessWidget {
                       isBorderradius == false
                           ? WidgetStatePropertyAll(
                             RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
+                              borderRadius: BorderRadius.circular(8),
                             ),
                           )
                           : null,
@@ -104,7 +104,7 @@ class ApBtn extends StatelessWidget {
                       isBorderradius == false
                           ? WidgetStatePropertyAll(
                             RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
+                              borderRadius: BorderRadius.circular(8),
                             ),
                           )
                           : null,

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:shopywell_app/core/helper/pagenavigator.dart';
+import 'package:shopywell_app/view/presentation/product/view/productscreen.dart';
 
 import '../../../../core/constants/strings.dart';
 import '../../../../core/helper/help_screensize.dart';
@@ -125,85 +127,90 @@ class _WhishListScreenState extends State<WhishListScreen> {
                                 10,
                             itemBuilder: (context, index) {
                              
-                              return Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(padding),
-                                  color: ColorResources.WHITE,
-                                  boxShadow: ColorResources.smallshadow
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                        padding,
-                                      ),
-                                      child: Image.network(
-                                        'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/079467/01/fnd/SEA/fmt/png/Core-Base-Backpack',
-                                      ),
-                                    ),
-                                    gap,
-                                Padding(
-                                  padding: const EdgeInsets.all(padding),
+                              return GestureDetector(
+                                onTap: () {
+                                  Screen.open(context, ProductScreen());
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(padding),
+                                    color: ColorResources.WHITE,
+                                    boxShadow: ColorResources.smallshadow
+                                  ),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
-                                      AppText(
-                                        text: 'Michael Kors',
-                                        size: 16,
-                                        weight: FontWeight.w500,
-                                        maxline: 1,
-                                      ),
-                                       AppText(
-                                    text: 'Black Edith Small Satchel',
-                                    size: 10,
-                                    weight: FontWeight.w400,
-                                    maxline: 2,
-                                  ),
-                                  AppText(
-                                    text: '$rupesssymbol 28,990',
-                                    size: 12,
-                                    weight: FontWeight.w500,
-                                  ),
-                               
-                                  Row(
-                                    children: [
-                                      RatingBar.builder(
-                                        itemSize: 12,
-                                        initialRating: 3.5,
-                                        minRating: 1,
-                                        direction: Axis.horizontal,
-                                        allowHalfRating: true,
-                                        itemCount: 5,
-                                        ignoreGestures: true,
-                                        itemPadding: EdgeInsets.symmetric(
-                                          horizontal: 1.0,
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(
+                                          padding,
                                         ),
-                                        itemBuilder:
-                                            (context, _) => Icon(
-                                              Icons.star,
-                                              size: 12,
-                                              color: ColorResources.STARCOLOR,
-                                            ),
-                                        tapOnlyMode: false,
-                                        unratedColor: ColorResources.HINTTEXT,
-                                        onRatingUpdate: (rating) {},
+                                        child: Image.network(
+                                          'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/079467/01/fnd/SEA/fmt/png/Core-Base-Backpack',
+                                        ),
                                       ),
-                                      gapHorizontal,
-                                      AppText(
-                                        text: '37623',
-                                        color: ColorResources.HINTTEXT,
-                                        size: 10,
-                                        weight: FontWeight.w400,
-                                      ),
+                                      gap,
+                                  Padding(
+                                    padding: const EdgeInsets.all(padding),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        AppText(
+                                          text: 'Michael Kors',
+                                          size: 16,
+                                          weight: FontWeight.w500,
+                                          maxline: 1,
+                                        ),
+                                         AppText(
+                                      text: 'Black Edith Small Satchel',
+                                      size: 10,
+                                      weight: FontWeight.w400,
+                                      maxline: 2,
+                                    ),
+                                    AppText(
+                                      text: '$rupesssymbol 28,990',
+                                      size: 12,
+                                      weight: FontWeight.w500,
+                                    ),
+                                 
+                                    Row(
+                                      children: [
+                                        RatingBar.builder(
+                                          itemSize: 12,
+                                          initialRating: 3.5,
+                                          minRating: 1,
+                                          direction: Axis.horizontal,
+                                          allowHalfRating: true,
+                                          itemCount: 5,
+                                          ignoreGestures: true,
+                                          itemPadding: EdgeInsets.symmetric(
+                                            horizontal: 1.0,
+                                          ),
+                                          itemBuilder:
+                                              (context, _) => Icon(
+                                                Icons.star,
+                                                size: 12,
+                                                color: ColorResources.STARCOLOR,
+                                              ),
+                                          tapOnlyMode: false,
+                                          unratedColor: ColorResources.HINTTEXT,
+                                          onRatingUpdate: (rating) {},
+                                        ),
+                                        gapHorizontal,
+                                        AppText(
+                                          text: '37623',
+                                          color: ColorResources.HINTTEXT,
+                                          size: 10,
+                                          weight: FontWeight.w400,
+                                        ),
+                                      ],
+                                    ),
+                                      ],
+                                    ),
+                                  ),
+                                 
                                     ],
                                   ),
-                                    ],
-                                  ),
-                                ),
-                               
-                                  ],
                                 ),
                               );
                             },
