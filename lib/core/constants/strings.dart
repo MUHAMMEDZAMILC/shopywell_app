@@ -17,4 +17,5 @@ const String boardone = 'boardone',
   yellowscatter='scatter',
   gotocart = 'gotocart',
   buynow = 'buynow',
-  hotsummer = 'hotsummer.png';
+  hotsummer = 'hotsummer.png',
+  coupon = 'coupon';
