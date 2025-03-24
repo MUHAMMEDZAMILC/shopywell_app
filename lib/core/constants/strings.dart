@@ -7,4 +7,5 @@ const String boardone = 'boardone',
   googleic = 'googleic',
   startbg = 'startbg.png',
   appbarlogo = 'appbarlogo.png',
-  draweric = 'drawer';
+  draweric = 'drawer',
+  offbg = 'offbg.png';

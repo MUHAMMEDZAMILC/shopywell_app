@@ -26,6 +26,7 @@ class ColorResources {
   static const Color BLACK = Color(0xff0d0005);
   static const Color WHITE = Colors.white;
   static const Color LIGHTGREY = Color(0xFFC4C4C4);
+  static const Color CONTAINERBLUE = Color(0xFF4392F9);
   static const Color TRANSPARENT = Colors.transparent;
 
 
@@ -70,5 +71,12 @@ class ColorResources {
                                         color: ColorResources.BLACK
                                             .withOpacity(0.3),
                                         blurRadius: paddingSmall)
+                                  ];
+  static List<BoxShadow> smallshadow =  [
+                                    BoxShadow(
+                                        color: ColorResources.BLACK
+                                            .withOpacity(0.08),
+                                            offset: Offset(1, 1),
+                                        blurRadius: paddingLarge)
                                   ];
 }

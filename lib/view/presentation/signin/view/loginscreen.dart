@@ -6,7 +6,6 @@ import 'package:shopywell_app/core/helper/pagenavigator.dart';
 import 'package:shopywell_app/core/utils/extension/space_ext.dart';
 import 'package:shopywell_app/core/utils/theme/colors.dart';
 import 'package:shopywell_app/core/utils/theme/dimensions.dart';
-import 'package:shopywell_app/view/components/appbar.dart';
 import 'package:shopywell_app/view/components/appbutton.dart';
 import 'package:shopywell_app/view/components/appimageassets.dart';
 import 'package:shopywell_app/view/components/apprichtext.dart';
@@ -14,7 +13,6 @@ import 'package:shopywell_app/view/components/appsvg.dart';
 import 'package:shopywell_app/view/components/apptext.dart';
 import 'package:shopywell_app/view/components/apptextfeild.dart';
 import 'package:shopywell_app/view/presentation/forgot/view/forgotpassscreen.dart';
-import 'package:shopywell_app/view/presentation/home/view/homescreen.dart';
 import 'package:shopywell_app/view/presentation/landing/view/landingscreen.dart';
 import 'package:shopywell_app/view/presentation/signup/view/registerscreen.dart';
 
