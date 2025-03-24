@@ -4,7 +4,6 @@ import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shopywell_app/core/constants/strings.dart';
 import 'package:shopywell_app/core/helper/help_screensize.dart';
-import 'package:shopywell_app/view/components/appbar.dart';
 import 'package:shopywell_app/view/components/appimageassets.dart';
 import 'package:shopywell_app/view/components/appsvg.dart';
 import '../../../../core/utils/theme/colors.dart';
@@ -39,8 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-    return Scaffold(
-      body: SizedBox(
+    return  SizedBox(
         width: ScreenUtil.screenWidth,
         height: ScreenUtil.screenHeight,
         child: SingleChildScrollView(
@@ -50,6 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: paddingLarge),
                 child: AppTextFeild(
                   controller: searchCtrl,
+                  filledcolor: ColorResources.WHITE,
+                  borderstyle: OutlineInputBorder(
+                    borderSide: BorderSide.none
+                  ),
                   prefix: Icon(
                     CupertinoIcons.search,
                     color: ColorResources.ICONCOLOR,
@@ -884,7 +886,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-      ),
-    );
+      )
+    ;
   }
 }
