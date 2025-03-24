@@ -1,4 +1,4 @@
-package com.example.shopywell_app
+package com.mz.shopywell_app
 
 import io.flutter.embedding.android.FlutterActivity
 

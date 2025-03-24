@@ -18,4 +18,5 @@ const String boardone = 'boardone',
   gotocart = 'gotocart',
   buynow = 'buynow',
   hotsummer = 'hotsummer.png',
-  coupon = 'coupon';
+  coupon = 'coupon',
+  paymentsuccpop = 'successpopup';

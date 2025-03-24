@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shopywell_app/core/helper/help_screensize.dart';
+import 'package:shopywell_app/core/helper/pagenavigator.dart';
 import 'package:shopywell_app/core/utils/theme/dimensions.dart';
 import 'package:shopywell_app/view/components/appbar.dart';
 import 'package:shopywell_app/view/components/appbutton.dart';
 import 'package:shopywell_app/view/components/apprichtext.dart';
 import 'package:shopywell_app/view/components/appsvg.dart';
+import 'package:shopywell_app/view/presentation/payment/view/paymentscreen.dart';
 
 import '../../../../core/constants/strings.dart';
 import '../../../../core/utils/theme/colors.dart';
@@ -239,7 +241,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 child: ApBtn(
                   height: 40,
                   onPressed: () {
-                  
+                  Screen.open(context, PaymentScreen());
                 }, isValid: true,child: AppText(text: 'Proceed to Payment',color: ColorResources.WHITE,),),
               )
             ],
