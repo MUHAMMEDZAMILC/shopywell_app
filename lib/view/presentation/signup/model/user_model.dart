@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 UserData userdataFromJson(String str) => UserData.fromJson(json.decode(str));
 
 String userdataToJson(UserData data) => json.encode(data.toJson());
@@ -52,7 +54,7 @@ class UserData {
         accountno: json["accountno"],
         holdername: json["holdername"],
         ifsccode: json["ifsccode"],
-        date: json["date"],
+        date: (json['date'] as Timestamp?)?.toDate(),
     );
 
     Map<String, dynamic> toJson() => {

@@ -10,3 +10,9 @@ abstract class LoginEvent extends Equatable {
 class CheckalreadyloginEvent extends LoginEvent {
   
 }
+
+class LoginuserEvent extends LoginEvent {
+  final BuildContext context;
+  final UserData data;
+  const LoginuserEvent(this.context,this.data,);
+}

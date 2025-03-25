@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopywell_app/core/constants/strings.dart';
 import 'package:shopywell_app/core/helper/help_loader.dart';
 import 'package:shopywell_app/core/helper/help_screensize.dart';
+import 'package:shopywell_app/core/helper/helper_logout.dart';
 import 'package:shopywell_app/core/helper/pagenavigator.dart';
 import 'package:shopywell_app/core/utils/extension/space_ext.dart';
 import 'package:shopywell_app/core/utils/theme/colors.dart';
@@ -11,6 +12,7 @@ import 'package:shopywell_app/core/utils/theme/dimensions.dart';
 import 'package:shopywell_app/view/components/appbar.dart';
 import 'package:shopywell_app/view/components/appimageassets.dart';
 import 'package:shopywell_app/view/components/appsvg.dart';
+import 'package:shopywell_app/view/components/apptext.dart';
 import 'package:shopywell_app/view/presentation/profile/view/profilescreen.dart';
 
 import '../viewmodel/bloc/landing_bloc.dart';
@@ -23,6 +25,7 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
     context.read<LandingBloc>().add(LandingInitialEvent(0));
@@ -33,10 +36,43 @@ class _LandingScreenState extends State<LandingScreen> {
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     return Scaffold(
+       key: scaffoldKey,
+      drawer: Drawer(elevation: 0,
+        backgroundColor: ColorResources.WHITE,
+        child: Padding(
+          padding: const EdgeInsets.all(paddingLarge),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  logout(context);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(paddingLarge),
+                    color: ColorResources.WHITE,
+                    boxShadow: ColorResources.defshadow
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical:  paddingLarge,horizontal: paddingLarge),
+                    child: Row(
+                      children: [
+                        Icon(Icons.logout),gapHorizontalLarge,
+                        AppText(text: 'Logout',)
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
       appBar: ApBarMnHmSc(
         leading: Padding(
           padding: const EdgeInsets.only(left: 16.0),
-          child: AppSvg(assetName: draweric),
+          child: AppSvg(assetName: draweric,onPressed: () => scaffoldKey.currentState?.openDrawer(),),
         ),
         titlewidget: AppImageAsset(assetName: appbarlogo),
         actions: [GestureDetector(

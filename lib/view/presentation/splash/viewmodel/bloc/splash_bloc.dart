@@ -2,7 +2,6 @@
 
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopywell_app/core/helper/pagenavigator.dart';

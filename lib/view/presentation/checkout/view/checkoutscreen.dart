@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shopywell_app/core/helper/help_screensize.dart';
 import 'package:shopywell_app/core/helper/pagenavigator.dart';
 import 'package:shopywell_app/core/utils/theme/dimensions.dart';

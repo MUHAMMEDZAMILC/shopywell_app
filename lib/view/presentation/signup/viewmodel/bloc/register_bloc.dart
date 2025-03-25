@@ -8,12 +8,14 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopywell_app/controller/sharedpreference/sharedpreferance.dart';
 import 'package:shopywell_app/core/globalvariables.dart';
 import 'package:shopywell_app/core/helper/help_toast.dart';
 import 'package:shopywell_app/core/helper/pagenavigator.dart';
 import 'package:shopywell_app/view/presentation/home/view/homescreen.dart';
 import 'package:shopywell_app/view/presentation/landing/view/landingscreen.dart';
+import 'package:shopywell_app/view/presentation/signin/viewmodel/bloc/login_bloc.dart';
 import 'package:shopywell_app/view/presentation/signup/model/user_model.dart';
 
 part 'register_event.dart';
@@ -33,11 +35,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     RegisterUserEvent event,
     Emitter<RegisterState> emit,
   ) async {
-    try {
-      emit(RegisterState(status: RegisterStatus.loading)); // Loading state
+    
 
       try {
-        // 1. Firebase Auth Registration
+         emit(RegisterState(status: RegisterStatus.loading)); // Loading state
         final userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
               email: event.data.email ?? '',
@@ -62,6 +63,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
             mesg: 'Registration Successful',
           ),
         );
+         event.context.read<LoginBloc>().add(CheckalreadyloginEvent());
         Screen.openAsNewPage(event.context, LandingScreen());
       } on FirebaseAuthException catch (e) {
         emit(
@@ -78,13 +80,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           ),
         );
       }
-    } catch (e) {
-      emit(
-        RegisterState(
-          status: RegisterStatus.error,
-          mesg: 'Registration Failed',
-        ),
-      );
-    }
+    
   }
 }

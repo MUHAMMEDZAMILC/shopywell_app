@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopywell_app/core/constants/strings.dart';
 import 'package:shopywell_app/core/helper/help_screensize.dart';
 import 'package:shopywell_app/core/helper/pagenavigator.dart';
@@ -13,8 +14,12 @@ import 'package:shopywell_app/view/components/appsvg.dart';
 import 'package:shopywell_app/view/components/apptext.dart';
 import 'package:shopywell_app/view/components/apptextfeild.dart';
 import 'package:shopywell_app/view/presentation/forgot/view/forgotpassscreen.dart';
-import 'package:shopywell_app/view/presentation/landing/view/landingscreen.dart';
+import 'package:shopywell_app/view/presentation/signin/viewmodel/bloc/login_bloc.dart';
+import 'package:shopywell_app/view/presentation/signup/model/user_model.dart';
 import 'package:shopywell_app/view/presentation/signup/view/registerscreen.dart';
+
+import '../../../../core/helper/help_toast.dart';
+import '../../../../core/helper/helper_emialvalidator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,12 +29,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController usernameCtrl = TextEditingController(),
+  TextEditingController emailCtrl = TextEditingController(),
       passwordCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SizedBox(
         width: ScreenUtil.screenWidth,
         height: ScreenUtil.screenHeight,
@@ -46,9 +52,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               gap21,
               AppTextFeild(
-                controller: usernameCtrl,
-                hinttext: 'Username / Email',
-                label: 'Username / Email',
+                controller: emailCtrl,
+                hinttext: 'Email',
+                label: 'Email',
+                type: TextInputType.emailAddress,
                 prefix: Icon(CupertinoIcons.person_fill),
                 hintStyle: TextStyle(
                   fontSize: 12,
@@ -106,10 +113,11 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               gap26,
               ApBtn(
-                onPressed: () {
-                  Screen.openAsNewPage(context, LandingScreen());
+                onPressed: () async{
+                  await loginuser(context);
                 },
                 isValid: true,
+                isLoading: context.watch<LoginBloc>().state.status == LoginStatus.loding,
                 child: AppText(
                   text: 'Login',
                   size: 20,
@@ -162,5 +170,18 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+  loginuser(BuildContext context) async {
+     bool isemil = emailvalidator(emailCtrl.text);
+     if(emailCtrl.text.isEmpty || isemil==false){
+snackBar(context, message: 'Email is not Valid');
+    }else if(passwordCtrl.text.isEmpty && passwordCtrl.text.length<6) {
+      snackBar(context, message: 'Password must be 6 Letter');
+    }else{
+      UserData body = UserData();
+      body.email = emailCtrl.text;
+      body.password = passwordCtrl.text;
+      context.read<LoginBloc>().add(LoginuserEvent(context,body));
+    }
   }
 }

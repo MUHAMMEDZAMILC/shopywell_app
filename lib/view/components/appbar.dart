@@ -75,8 +75,6 @@ class ApBarMnHmSc extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
         titleSpacing: 10,
         elevation: 0,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(28))),
         title: titlewidget ?? Text(title ?? ''),
         leading: leading,
         actions: actions);
