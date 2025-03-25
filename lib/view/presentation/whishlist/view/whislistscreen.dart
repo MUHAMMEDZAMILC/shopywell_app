@@ -78,7 +78,7 @@ class _WhishListScreenState extends State<WhishListScreen> {
                     children: [
                       Expanded(
                         child: AppText(
-                          text: '52,082+ Iteams ',
+                          text: '${state.products.length} Iteams ',
                           size: 18,
                           weight: FontWeight.w600,
                         ),

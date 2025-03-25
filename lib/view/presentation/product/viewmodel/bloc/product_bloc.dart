@@ -20,6 +20,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     // TODO: implement mapEventToState
   }
   Products? product;
+  List<Products>? similarproduct = [];
   productload(ProductDetailinitEvent event, Emitter<ProductState> emit) async {
     try {
       emit(ProductState(status: ProductStatus.loading));
@@ -36,9 +37,18 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
               })
               .toList()
               .first;
-      emit(ProductState(status: ProductStatus.loaded, product: product));
+      QuerySnapshot similarsnapshot =
+          await FirebaseFirestore.instance
+              .collection(productcollection)
+              .where('category', isEqualTo: product?.category)
+              .get();
+      similarproduct =
+          similarsnapshot.docs.map((doc) {
+            return Products.fromJson(doc.data() as Map<String, dynamic>);
+          }).toList();
+      emit(ProductState(status: ProductStatus.loaded, product: product,similarproduct: similarproduct));
     } catch (e) {
-      emit(ProductState(status: ProductStatus.error, product: product));
+      emit(ProductState(status: ProductStatus.error, product: product,similarproduct: similarproduct));
     }
   }
 }

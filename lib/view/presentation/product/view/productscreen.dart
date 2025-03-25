@@ -13,6 +13,7 @@ import 'package:shopywell_app/core/utils/theme/dimensions.dart';
 import 'package:shopywell_app/view/components/appbar.dart';
 import 'package:shopywell_app/view/components/appsvg.dart';
 import 'package:shopywell_app/view/components/apptext.dart';
+import 'package:shopywell_app/view/presentation/product/model/product_model.dart';
 import 'package:shopywell_app/view/presentation/product/view/widgets/circleindicator.dart';
 import 'package:shopywell_app/view/presentation/product/viewmodel/bloc/product_bloc.dart';
 
@@ -428,9 +429,11 @@ class _ProductScreenState extends State<ProductScreen> {
                     child: SizedBox(
                       height: 186,
                       child: ListView.builder(
+                        itemCount: state.similarproduct?.length,
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
+                          Products data = state.similarproduct![index];
                           return Padding(
                             padding: const EdgeInsets.only(right: 12.0),
                             child: Container(
@@ -453,7 +456,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                         borderRadius: BorderRadius.circular(6),
                                         image: DecorationImage(
                                           image: NetworkImage(
-                                            'https://media.darveys.com/catalog/product/5/7/573-lot6242_1.jpg',
+                                            data.image!,
                                           ),
                                           fit: BoxFit.contain,
                                         ),
@@ -461,19 +464,19 @@ class _ProductScreenState extends State<ProductScreen> {
                                     ),
                                     gap,
                                     AppText(
-                                      text: 'Michael Kors',
+                                      text:data.title??'',
                                       size: 10,
                                       weight: FontWeight.w500,
                                     ),
                                     AppText(
-                                      text: '$rupesssymbol 28,990',
+                                      text: '$rupesssymbol ${data.price}',
                                       size: 10,
                                       weight: FontWeight.w500,
                                     ),
                                     Row(
                                       children: [
                                         AppText(
-                                          text: '$rupesssymbol 42,500',
+                                          text: '$rupesssymbol ${data.mrp}',
                                           size: 10,
                                           weight: FontWeight.w300,
                                           color: ColorResources.HINTTEXT,
@@ -482,14 +485,14 @@ class _ProductScreenState extends State<ProductScreen> {
                                         ),
                                         gapHorizontal,
                                         AppText(
-                                          text: '40%Off',
+                                          text: '${data.off}%Off',
                                           size: 10,
                                           weight: FontWeight.w300,
                                           color: ColorResources.AMTRED,
                                         ),
                                       ],
                                     ),
-                                    
+                                    gapLarge,
                                   ],
                                 ),
                               ),

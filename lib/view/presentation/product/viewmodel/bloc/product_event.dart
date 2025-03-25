@@ -11,3 +11,4 @@ class ProductDetailinitEvent extends ProductEvent {
   String productid;
   ProductDetailinitEvent(this.productid);
 }
+
