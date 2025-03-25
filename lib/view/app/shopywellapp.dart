@@ -10,6 +10,7 @@ import 'package:shopywell_app/view/presentation/signup/viewmodel/bloc/register_b
 import 'package:shopywell_app/view/presentation/splash/view/splashscreen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopywell_app/view/presentation/splash/viewmodel/bloc/splash_bloc.dart';
+import 'package:shopywell_app/view/presentation/whishlist/viewmodel/bloc/whishlist_bloc.dart';
 
 import '../../viewmodel/firebase/bloc/firebase_bloc.dart';
 
@@ -28,6 +29,7 @@ class ShpoywellApp extends StatelessWidget {
         BlocProvider(create: (context) => RegisterBloc(),),
         BlocProvider(create: (context) => HomeBloc(),),
         BlocProvider(create: (context) => ProfileBloc(),),
+        BlocProvider(create: (context) => WhishlistBloc(),),
       ],
       child: MaterialApp(
         title: AppConstants.appname,

@@ -57,6 +57,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
      products = snapshot.docs.map((doc) {
         return Products.fromJson(doc.data() as Map<String, dynamic>);
       }).toList();
+      products.shuffle();
       emit(HomeState(status: HomeStatus.loaded, pproducts: products));
     } catch (e) {
       log("failed add whishlist $e");
