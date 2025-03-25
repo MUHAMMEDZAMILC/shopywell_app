@@ -1,22 +1,18 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, override_on_non_overriding_member
 
 import 'dart:async';
-
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopywell_app/controller/sharedpreference/sharedpreferance.dart';
-import 'package:shopywell_app/core/globalvariables.dart';
-import 'package:shopywell_app/core/helper/help_toast.dart';
 import 'package:shopywell_app/core/helper/pagenavigator.dart';
-import 'package:shopywell_app/view/presentation/home/view/homescreen.dart';
 import 'package:shopywell_app/view/presentation/landing/view/landingscreen.dart';
 import 'package:shopywell_app/view/presentation/signin/viewmodel/bloc/login_bloc.dart';
 import 'package:shopywell_app/view/presentation/signup/model/user_model.dart';
+
+import '../../../../../core/globalvariables.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';
@@ -28,7 +24,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   @override
   Stream<RegisterState> mapEventToState(RegisterEvent event) async* {
-    // TODO: implement mapEventToState
+    
   }
 
   FutureOr<void> registeruser(

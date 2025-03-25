@@ -7,11 +7,11 @@ class CircledotIndicator extends StatelessWidget {
   final Color inactiveColor;
 
   const CircledotIndicator({
-    Key? key,
+    super.key,
     required this.isActive,
     this.activeColor = ColorResources.PRIMARYCOLOR,
     this.inactiveColor = ColorResources.ICONCOLOR,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

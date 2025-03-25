@@ -26,7 +26,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
-    // TODO: implement mapEventToState
+
   }
 
   FutureOr<void> checklogin(

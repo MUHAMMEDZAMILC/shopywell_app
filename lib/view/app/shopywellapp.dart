@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopywell_app/core/constants/appcontants/appconstants.dart';
 import 'package:shopywell_app/core/utils/theme/theme_data.dart';
+import 'package:shopywell_app/view/presentation/home/viewmodel/bloc/home_bloc.dart';
 import 'package:shopywell_app/view/presentation/landing/viewmodel/bloc/landing_bloc.dart';
 import 'package:shopywell_app/view/presentation/onboard/viewmodel/bloc/onboard_bloc.dart';
 import 'package:shopywell_app/view/presentation/profile/viewmodel/bloc/profile_bloc.dart';
@@ -25,6 +26,7 @@ class ShpoywellApp extends StatelessWidget {
         BlocProvider(create: (context) => LandingBloc(),),
         BlocProvider(create: (context) => LoginBloc(),),
         BlocProvider(create: (context) => RegisterBloc(),),
+        BlocProvider(create: (context) => HomeBloc(),),
         BlocProvider(create: (context) => ProfileBloc(),),
       ],
       child: MaterialApp(

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -11,7 +13,6 @@ import 'package:shopywell_app/view/components/appsvg.dart';
 import 'package:shopywell_app/view/components/apptext.dart';
 import 'package:shopywell_app/view/presentation/product/view/widgets/circleindicator.dart';
 
-import '../../../components/appbutton.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});

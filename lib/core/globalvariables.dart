@@ -4,7 +4,8 @@ getstartkey = 'getstartkey',
 useridkey = 'useridkey'
 ;
 // collection names
-String usercollection = 'UserCollection';
+String usercollection = 'UserCollection',
+productcollection = 'ProductCollection';
 // stored data
 
 bool isonboard = false,

@@ -2,8 +2,6 @@
 
 import 'dart:async';
 import 'dart:developer';
-
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +24,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   @override
   Stream<ProfileState> mapEventToState(ProfileEvent event) async* {
-    // TODO: implement mapEventToState
+
   }
 
   profileinit(ProfileInitEvent event, Emitter<ProfileState> emit) async {

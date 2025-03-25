@@ -1,3 +1,5 @@
+// ignore_for_file: override_on_non_overriding_member
+
 import 'dart:async';
 import 'dart:developer';
 
@@ -18,7 +20,7 @@ class FirebaseBloc extends Bloc<FirebaseEvent, FirebaseState> {
   Stream<FirebaseState> mapEventToState(
     FirebaseEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    
   }
 
   FutureOr<void> firebaseinit(FirebaseInitialEvent event, Emitter<FirebaseState> emit)async {
