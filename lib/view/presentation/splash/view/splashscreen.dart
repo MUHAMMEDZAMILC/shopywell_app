@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopywell_app/controller/sharedpreference/sharedpreferance.dart';
 import 'package:shopywell_app/view/components/appimageassets.dart';
 import 'package:shopywell_app/view/presentation/splash/viewmodel/bloc/splash_bloc.dart';
 import 'package:shopywell_app/viewmodel/firebase/bloc/firebase_bloc.dart';
@@ -20,6 +23,7 @@ class _SplasScreenState extends State<SplasScreen> {
     super.initState();
   }
   getdata() async {
+    await SharedPreferance.init();
     context.read<FirebaseBloc>().add(FirebaseInitialEvent());
     context.read<SplashBloc>().add(SplashInitialEvent(context));
   }

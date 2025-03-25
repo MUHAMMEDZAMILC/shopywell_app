@@ -1,9 +1,12 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shopywell_app/controller/sharedpreference/sharedpreferance.dart';
 import 'package:shopywell_app/core/constants/strings.dart';
+import 'package:shopywell_app/core/globalvariables.dart';
 import 'package:shopywell_app/view/presentation/getstart/view/getstart.dart';
 
 import '../../../../../core/helper/pagenavigator.dart';
@@ -21,6 +24,7 @@ class OnboardBloc extends Bloc<OnboardEvent, OnboardState> {
         ),
       ) {
     on<OnboardInitEvent>(oneventinit);
+    on<CheckonboardEvent>(checkonboard);
     on<OnboardPageChangeEvent>(onboardpagechnage);
     on<OnboardskipEvent>(onboardskip);
     on<OnboardnextEvent>(onboardnext);
@@ -97,7 +101,6 @@ class OnboardBloc extends Bloc<OnboardEvent, OnboardState> {
         duration: Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-      
     } else {
       emit(
         OnboardState(
@@ -107,6 +110,50 @@ class OnboardBloc extends Bloc<OnboardEvent, OnboardState> {
         ),
       );
       Screen.openAsNewPage(event.context, GetStartScreen());
+    }
+  }
+
+  FutureOr<void> checkonboard(
+    CheckonboardEvent event,
+    Emitter<OnboardState> emit,
+  ) async {
+    try {
+      emit(OnboardState(
+            ischecked: false,
+            status: OnboardStatus.initial,
+            onboardingData: onboardingData,
+            currentindex: currentindex,
+          ));
+      bool? isonboard = await SharedPreferance.getbool(onboardkey);
+      log(isonboard.toString());
+      if (isonboard != null && isonboard == true) {
+        emit(
+          OnboardState(
+            ischecked: true,
+            status: OnboardStatus.success,
+            onboardingData: onboardingData,
+            currentindex: currentindex,
+          ),
+        );
+      } else {
+        emit(
+          OnboardState(
+            ischecked: false,
+            status: OnboardStatus.success,
+            onboardingData: onboardingData,
+            currentindex: currentindex,
+          ),
+        );
+      }
+    } catch (e) {
+      emit(
+        OnboardState(
+          ischecked: false,
+          status: OnboardStatus.success,
+          onboardingData: onboardingData,
+          currentindex: currentindex,
+        ),
+      );
     }
   }
 }

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopywell_app/controller/sharedpreference/sharedpreferance.dart';
+import 'package:shopywell_app/core/globalvariables.dart';
 import 'package:shopywell_app/core/utils/theme/colors.dart';
 import 'package:shopywell_app/core/utils/theme/dimensions.dart';
 import 'package:shopywell_app/view/components/appbar.dart';
@@ -49,9 +51,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
             ),
             actions: [
               TextButton(
-                onPressed: () {
+                onPressed: () async{
                   context.read<OnboardBloc>().add(OnboardskipEvent(context));
-                },
+                  await SharedPreferance.save(key: onboardkey, value: true);},
                 child: AppText(text: "Skip", size: 14, weight: FontWeight.w600),
               ),
             ],
@@ -105,10 +107,11 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           ],
                         ),
                         TextButton(
-                          onPressed: () {
+                          onPressed: ()async {
                             context.read<OnboardBloc>().add(
                               OnboardnextEvent(context, _pageController),
                             );
+                            await SharedPreferance.save(key: onboardkey, value: true);
                           },
                           child: AppText(
                             text:

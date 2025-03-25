@@ -55,9 +55,9 @@ class _GetStartScreenState extends State<GetStartScreen> {
                   width: ScreenUtil.screenWidth!*0.7,
                   onPressed: () {
                   Screen.openClosingCurrentPage(context, LoginScreen());
-                }, isValid: true,child: AppText(text: 'Get Start',size: 20,
+                }, isValid: true,child: AppText(text: 'Get Start',
                   color: ColorResources.WHITE,
-                  weight: FontWeight.w600,),)
+                 ),)
 ,16.hBox,
               ],
             )

@@ -28,3 +28,7 @@ class OnboardnextEvent extends OnboardEvent {
   final PageController controller;
   const OnboardnextEvent(this.context,this.controller);
 }
+
+class CheckonboardEvent extends OnboardEvent {
+  
+}
