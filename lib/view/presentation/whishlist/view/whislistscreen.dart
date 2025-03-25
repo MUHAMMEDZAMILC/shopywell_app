@@ -27,7 +27,7 @@ class _WhishListScreenState extends State<WhishListScreen> {
    TextEditingController searchCtrl = TextEditingController();
    @override
   void initState() {
-    context.read<WhishlistBloc>().add(WhishListInitEvent());
+    context.read<WhishlistBloc>().add(WhishListInitEvent(context: context));
     super.initState();
   }
   @override

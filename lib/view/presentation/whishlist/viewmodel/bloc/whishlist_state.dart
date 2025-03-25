@@ -1,6 +1,6 @@
 part of 'whishlist_bloc.dart';
 
-enum WhishListStatus {initial,loading,loaded,error}
+enum WhishListStatus {initial,loading,loaded,error,add,addsuccess}
  class WhishlistState extends Equatable {
   final WhishListStatus status;
   final List<Products> products;

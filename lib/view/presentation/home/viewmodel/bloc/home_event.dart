@@ -8,10 +8,11 @@ abstract class HomeEvent extends Equatable {
 }
 
 class HomeInitEvent extends HomeEvent {
-  
+  BuildContext context;
+  HomeInitEvent(this.context);
 }
 
-class HomeaddWhislistEvent extends HomeEvent {
-  Products product;
-  HomeaddWhislistEvent(this.product);
+class HomegetproductEvent extends HomeEvent {
+   BuildContext context;
+  HomegetproductEvent(this.context);
 }

@@ -7,4 +7,13 @@ abstract class WhishlistEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class WhishListInitEvent extends WhishlistEvent{}
+class WhishListInitEvent extends WhishlistEvent{
+  BuildContext context;
+  WhishListInitEvent({required this.context});
+}
+
+class WhishListAddProductEvent extends WhishlistEvent {
+  BuildContext context;
+  String productid;
+  WhishListAddProductEvent({required this.context, required this.productid});
+}
