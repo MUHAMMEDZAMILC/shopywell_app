@@ -42,6 +42,12 @@ class _WhishListScreenState extends State<WhishListScreen> {
             height: ScreenUtil.screenHeight,
           );
         }
+        if (state.status == WhishListStatus.loaded && state.products.isEmpty) {
+          return CustomNotFound(
+            errortext: 'Not Data Found',
+            height: ScreenUtil.screenHeight,
+          );
+        }
       return SizedBox(
         width: ScreenUtil.screenWidth,
         height: ScreenUtil.screenHeight,

@@ -190,8 +190,7 @@ class CustomNotFound extends StatelessWidget {
             ),
             gap,
             AppText(
-              text: errortext ?? '',
-              color: ColorResources.APPBARBG,
+              text: errortext ?? 'Data Not Found',
               weight: FontWeight.w500,
               letterspace: 0.6,
             ),

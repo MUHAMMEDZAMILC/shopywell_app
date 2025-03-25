@@ -16,3 +16,8 @@ class LoginuserEvent extends LoginEvent {
   final UserData data;
   const LoginuserEvent(this.context,this.data,);
 }
+
+class LoginwithgoogleEvent extends LoginEvent {
+  final BuildContext context;
+  const LoginwithgoogleEvent(this.context);
+}

@@ -140,7 +140,9 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppImageAsset(assetName: google),
+                  AppImageAsset(assetName: google,onPressed: () {
+                    context.read<LoginBloc>().add(LoginwithgoogleEvent(context));
+                  },),
                   gapHorizontal,
                   AppSvg(assetName: facebook),
                   gapHorizontal,
