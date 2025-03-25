@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopywell_app/controller/sharedpreference/sharedpreferance.dart';
+import 'package:shopywell_app/core/globalvariables.dart';
 import 'package:shopywell_app/core/helper/pagenavigator.dart';
 import 'package:shopywell_app/view/presentation/signin/view/loginscreen.dart';
 import '../../view/components/apptext.dart';
@@ -21,7 +22,7 @@ logout(BuildContext context) async {
               CupertinoButton(
                   child: AppText( text:'Logout'),
                   onPressed: () async {
-                    await SharedPreferance.clear();
+                    await SharedPreferance.pref?.remove(useridkey);
                    
                    Screen.openAsNewPage(context, LoginScreen());
                   })
