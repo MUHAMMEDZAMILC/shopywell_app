@@ -29,7 +29,9 @@ class WhishlistBloc extends Bloc<WhishlistEvent, WhishlistState> {
      QuerySnapshot snapshot =
           await FirebaseFirestore.instance
               .collection(productcollection).where('whish',isEqualTo: 1).get();
+             
      products = snapshot.docs.map((doc) {
+       log(doc.data().toString());
         return Products.fromJson(doc.data() as Map<String, dynamic>);
       }).toList();
       emit(WhishlistState(status: WhishListStatus.loaded, products: products));

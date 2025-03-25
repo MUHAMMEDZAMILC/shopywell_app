@@ -148,7 +148,7 @@ class _WhishListScreenState extends State<WhishListScreen> {
                                Products data = state.products[index];
                                 return GestureDetector(
                                   onTap: () {
-                                    Screen.open(context, ProductScreen());
+                                    Screen.open(context, ProductScreen(productid: data.id??'',));
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
