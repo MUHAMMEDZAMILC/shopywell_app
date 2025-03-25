@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopywell_app/view/components/appimageassets.dart';
 import 'package:shopywell_app/view/presentation/splash/viewmodel/bloc/splash_bloc.dart';
+import 'package:shopywell_app/viewmodel/firebase/bloc/firebase_bloc.dart';
 
 import '../../../../core/helper/help_screensize.dart';
 
@@ -15,8 +16,12 @@ class SplasScreen extends StatefulWidget {
 class _SplasScreenState extends State<SplasScreen> {
   @override
   void initState() {
-    context.read<SplashBloc>().add(SplashInitialEvent(context));
+    getdata();
     super.initState();
+  }
+  getdata() async {
+    context.read<FirebaseBloc>().add(FirebaseInitialEvent());
+    context.read<SplashBloc>().add(SplashInitialEvent(context));
   }
   @override
   Widget build(BuildContext context) {
