@@ -3,6 +3,7 @@ import 'package:shopywell_app/core/constants/appcontants/appconstants.dart';
 import 'package:shopywell_app/core/utils/theme/theme_data.dart';
 import 'package:shopywell_app/view/presentation/landing/viewmodel/bloc/landing_bloc.dart';
 import 'package:shopywell_app/view/presentation/onboard/viewmodel/bloc/onboard_bloc.dart';
+import 'package:shopywell_app/view/presentation/profile/viewmodel/bloc/profile_bloc.dart';
 import 'package:shopywell_app/view/presentation/signin/viewmodel/bloc/login_bloc.dart';
 import 'package:shopywell_app/view/presentation/signup/viewmodel/bloc/register_bloc.dart';
 import 'package:shopywell_app/view/presentation/splash/view/splashscreen.dart';
@@ -24,6 +25,7 @@ class ShpoywellApp extends StatelessWidget {
         BlocProvider(create: (context) => LandingBloc(),),
         BlocProvider(create: (context) => LoginBloc(),),
         BlocProvider(create: (context) => RegisterBloc(),),
+        BlocProvider(create: (context) => ProfileBloc(),),
       ],
       child: MaterialApp(
         title: AppConstants.appname,

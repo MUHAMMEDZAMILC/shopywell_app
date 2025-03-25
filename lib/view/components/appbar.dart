@@ -27,6 +27,8 @@ class ApBarMn extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      shadowColor: ColorResources.TRANSPARENT,
+      elevation: 0,
       titleSpacing: 10,
       flexibleSpace: Container(
         decoration: const BoxDecoration(),
@@ -73,6 +75,7 @@ class ApBarMnHmSc extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+       shadowColor: ColorResources.TRANSPARENT,
         titleSpacing: 10,
         elevation: 0,
         title: titlewidget ?? Text(title ?? ''),
