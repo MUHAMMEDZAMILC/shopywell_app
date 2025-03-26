@@ -30,7 +30,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     try {
       emit(PaymentState(status: PaymentStatus.paymenting));
       var options = {
-        'key': 'rzp_test_ms0VgDtljSg2df',
+        'key': 'rzp_live_6NEMkMwtWOVXWs',
         'amount': event.payamount * 100,
         'name': event.productname,
         'description': event.describtion,

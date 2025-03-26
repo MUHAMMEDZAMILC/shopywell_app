@@ -7,6 +7,6 @@ enum PaymentStatus {initial,loading,loaded,error,paymenting,paymentsuccess,payme
   PaymentState({required this.status,this.message});
   
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [status,message];
 }
 

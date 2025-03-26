@@ -132,6 +132,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                  
                 },
                 isValid: true,
+                isLoading:  context.watch<PaymentBloc>().state.status == PaymentStatus.paymenting,
                 child: AppText(text: 'Continue', color: ColorResources.WHITE),
               ),
             ],
