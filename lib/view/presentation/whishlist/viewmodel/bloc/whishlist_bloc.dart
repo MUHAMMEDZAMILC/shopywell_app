@@ -21,9 +21,7 @@ class WhishlistBloc extends Bloc<WhishlistEvent, WhishlistState> {
     on<WhishListAddProductEvent>(addorremovewhish);
   }
 
-  @override
   Stream<WhishlistState> mapEventToState(WhishlistEvent event) async* {
-    // TODO: implement mapEventToState
   }
   List<Products> products = [];
   initwhislist(WhishListInitEvent event, Emitter<WhishlistState> emit) async {

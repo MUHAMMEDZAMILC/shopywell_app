@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 part of 'register_bloc.dart';
 
 enum RegisterStatus {initiize,loading,success,error}

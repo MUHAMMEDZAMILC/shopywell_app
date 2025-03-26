@@ -13,6 +13,7 @@ import 'package:shopywell_app/view/presentation/splash/viewmodel/bloc/splash_blo
 import 'package:shopywell_app/view/presentation/whishlist/viewmodel/bloc/whishlist_bloc.dart';
 
 import '../../viewmodel/firebase/bloc/firebase_bloc.dart';
+import '../presentation/cart/viewmodel/bloc/cart_bloc.dart';
 import '../presentation/product/viewmodel/bloc/product_bloc.dart';
 
 class ShpoywellApp extends StatelessWidget {
@@ -32,6 +33,7 @@ class ShpoywellApp extends StatelessWidget {
         BlocProvider(create: (context) => ProfileBloc(),),
         BlocProvider(create: (context) => WhishlistBloc(),),
         BlocProvider(create: (context) => ProductBloc(),),
+        BlocProvider(create: (context) => CartBloc(),),
       ],
       child: MaterialApp(
         title: AppConstants.appname,

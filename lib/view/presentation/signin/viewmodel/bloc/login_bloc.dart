@@ -15,7 +15,6 @@ import 'package:shopywell_app/core/helper/pagenavigator.dart';
 import 'package:shopywell_app/view/presentation/landing/view/landingscreen.dart';
 import 'package:shopywell_app/view/presentation/signup/model/user_model.dart';
 import '../../../../../controller/sharedpreference/sharedpreferance.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -82,7 +81,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         log('Login Failed');
         emit(LoginState(status: LoginStatus.error));
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       emit(LoginState(status: LoginStatus.error));
     } catch (e) {
       log('Login Failed $e');

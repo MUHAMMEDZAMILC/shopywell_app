@@ -22,7 +22,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<ProfileeditEvent>(profileedit);
   }
 
-  @override
   Stream<ProfileState> mapEventToState(ProfileEvent event) async* {
 
   }

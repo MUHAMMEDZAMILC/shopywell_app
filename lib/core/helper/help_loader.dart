@@ -158,7 +158,6 @@ class CustomError extends StatelessWidget {
             gap,
             AppText(
               text: errortext ?? '',
-              color: ColorResources.APPBARBG,
               weight: FontWeight.w500,
               letterspace: 0.6,
             ),

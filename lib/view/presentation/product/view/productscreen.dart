@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, must_be_immutable
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +13,7 @@ import 'package:shopywell_app/core/utils/theme/dimensions.dart';
 import 'package:shopywell_app/view/components/appbar.dart';
 import 'package:shopywell_app/view/components/appsvg.dart';
 import 'package:shopywell_app/view/components/apptext.dart';
+import 'package:shopywell_app/view/presentation/cart/viewmodel/bloc/cart_bloc.dart';
 import 'package:shopywell_app/view/presentation/product/model/product_model.dart';
 import 'package:shopywell_app/view/presentation/product/view/widgets/circleindicator.dart';
 import 'package:shopywell_app/view/presentation/product/viewmodel/bloc/product_bloc.dart';
@@ -252,7 +253,9 @@ class _ProductScreenState extends State<ProductScreen> {
                         gapLarge,
                         Row(
                           children: [
-                            AppSvg(assetName: gotocart),
+                            AppSvg(assetName: gotocart,onPressed: () {
+                              context.read<CartBloc>().add(CartAddEvent(context, widget.productid, 1));
+                            },),
                             12.wBox,
                             AppSvg(assetName: buynow),
                           ],

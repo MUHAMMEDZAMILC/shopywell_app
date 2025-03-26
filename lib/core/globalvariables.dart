@@ -6,7 +6,9 @@ useridkey = 'useridkey'
 // collection names
 String usercollection = 'UserCollection',
 productcollection = 'ProductCollection',
-whishlistcollection = 'WhishListCollection';
+whishlistcollection = 'WhishListCollection',
+cartcollection = 'CartCollection',
+addresscollection = 'AddressCollection';
 // stored data
 
 bool isonboard = false,

@@ -15,9 +15,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<ProductDetailinitEvent>(productload);
   }
 
-  @override
   Stream<ProductState> mapEventToState(ProductEvent event) async* {
-    // TODO: implement mapEventToState
   }
   Products? product;
   List<Products>? similarproduct = [];
