@@ -8,7 +8,8 @@ String usercollection = 'UserCollection',
 productcollection = 'ProductCollection',
 whishlistcollection = 'WhishListCollection',
 cartcollection = 'CartCollection',
-addresscollection = 'AddressCollection';
+addresscollection = 'AddressCollection',
+ordercollection ='OrderCollection';
 // stored data
 
 bool isonboard = false,

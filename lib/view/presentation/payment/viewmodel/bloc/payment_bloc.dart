@@ -30,8 +30,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     try {
       emit(PaymentState(status: PaymentStatus.paymenting));
       var options = {
-        'key':
-            'rzp_test_ms0VgDtljSg2df',
+        'key': 'rzp_test_ms0VgDtljSg2df',
         'amount': event.payamount * 100,
         'name': event.productname,
         'description': event.describtion,
@@ -46,50 +45,63 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     } catch (e) {
       emit(PaymentState(status: PaymentStatus.paymentfailed));
     }
-    
   }
 
   handlePaymentSuccess(BuildContext context, PaymentSuccessResponse? res) {
     snackBar(context, message: 'payment Sucess', type: MessageType.success);
-    showDialog(context: context, builder: (context) {
-                    return AlertDialog(
-                      backgroundColor: ColorResources.TRANSPARENT,
-                      contentPadding: EdgeInsets.zero,
-                      content: Stack(
-                        children: [
-                          AppSvg(assetName: paymentsuccpop),
-                          Positioned(
-                            right: 0,
-                            child: GestureDetector(
-                              onTap: (){
-Navigator.pop(context);
-                              } ,
-                              child: Container(
-                               decoration: BoxDecoration(
-                                 color: ColorResources.WHITE,
-                                 boxShadow: ColorResources.defshadow,
-                              shape: BoxShape.circle),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(padding),
-                                  child: Icon(CupertinoIcons.clear, color: ColorResources.BTNRED,size: 18,),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: ColorResources.TRANSPARENT,
+          contentPadding: EdgeInsets.zero,
+          content: Stack(
+            children: [
+              AppSvg(assetName: paymentsuccpop),
+              Positioned(
+                right: 0,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: ColorResources.WHITE,
+                      boxShadow: ColorResources.defshadow,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(padding),
+                      child: Icon(
+                        CupertinoIcons.clear,
+                        color: ColorResources.BTNRED,
+                        size: 18,
                       ),
-                    );
-                  },);
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
-  void handlePaymentError(BuildContext context,PaymentFailureResponse re,) {
+  void handlePaymentError(BuildContext context, PaymentFailureResponse re) {
     print("Error");
     snackBar(context, message: "Error payment ${re.message}");
   }
 
   paymentinit(PaymentInitEvent event, Emitter<PaymentState> emit) {
     _razorpay = Razorpay();
-    _razorpay?.on(Razorpay.EVENT_PAYMENT_SUCCESS, (response) => handlePaymentSuccess(event.context, response));
-    _razorpay?.on(Razorpay.EVENT_PAYMENT_ERROR, (response) => handlePaymentError(event.context, response));
+    _razorpay?.on(
+      Razorpay.EVENT_PAYMENT_SUCCESS,
+      (response) => handlePaymentSuccess(event.context, response),
+    );
+    _razorpay?.on(
+      Razorpay.EVENT_PAYMENT_ERROR,
+      (response) => handlePaymentError(event.context, response),
+    );
   }
 }
