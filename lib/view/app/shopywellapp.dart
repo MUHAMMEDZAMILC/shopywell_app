@@ -4,6 +4,7 @@ import 'package:shopywell_app/core/utils/theme/theme_data.dart';
 import 'package:shopywell_app/view/presentation/home/viewmodel/bloc/home_bloc.dart';
 import 'package:shopywell_app/view/presentation/landing/viewmodel/bloc/landing_bloc.dart';
 import 'package:shopywell_app/view/presentation/onboard/viewmodel/bloc/onboard_bloc.dart';
+import 'package:shopywell_app/view/presentation/payment/viewmodel/bloc/payment_bloc.dart';
 import 'package:shopywell_app/view/presentation/profile/viewmodel/bloc/profile_bloc.dart';
 import 'package:shopywell_app/view/presentation/signin/viewmodel/bloc/login_bloc.dart';
 import 'package:shopywell_app/view/presentation/signup/viewmodel/bloc/register_bloc.dart';
@@ -34,6 +35,7 @@ class ShpoywellApp extends StatelessWidget {
         BlocProvider(create: (context) => WhishlistBloc(),),
         BlocProvider(create: (context) => ProductBloc(),),
         BlocProvider(create: (context) => CartBloc(),),
+        BlocProvider(create: (context) => PaymentBloc(),),
       ],
       child: MaterialApp(
         title: AppConstants.appname,

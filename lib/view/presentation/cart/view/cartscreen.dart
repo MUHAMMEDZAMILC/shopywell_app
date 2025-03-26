@@ -149,7 +149,7 @@ class _CartScreenState extends State<CartScreen> {
                         padding: const EdgeInsets.symmetric(vertical: paddingSmall),
                         child: GestureDetector(
                           onTap: () {
-                            Screen.open(context, CheckoutScreen());
+                            Screen.open(context, CheckoutScreen(cartdata: data,));
                           },
                           child: Container(
                             decoration: BoxDecoration(

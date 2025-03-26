@@ -7,6 +7,7 @@ import 'package:shopywell_app/view/components/appbar.dart';
 import 'package:shopywell_app/view/components/appbutton.dart';
 import 'package:shopywell_app/view/components/apprichtext.dart';
 import 'package:shopywell_app/view/components/appsvg.dart';
+import 'package:shopywell_app/view/presentation/cart/model/cart_model.dart';
 import 'package:shopywell_app/view/presentation/payment/view/paymentscreen.dart';
 
 import '../../../../core/constants/strings.dart';
@@ -14,8 +15,8 @@ import '../../../../core/utils/theme/colors.dart';
 import '../../../components/apptext.dart';
 
 class CheckoutScreen extends StatefulWidget {
-  const CheckoutScreen({super.key});
-
+   CheckoutScreen({super.key,required this.cartdata});
+  CartModel cartdata;
   @override
   State<CheckoutScreen> createState() => _CheckoutScreenState();
 }
@@ -43,7 +44,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       borderRadius: BorderRadius.circular(6),
                       image: DecorationImage(
                         image: NetworkImage(
-                          'https://www.figma.com/file/H63EWkcBYgItXxpB5542Cy/image/8078cca87e2902aed324a7079170bc593f670a51',
+                          widget.cartdata.product?.image??'',
                         ),
                         fit: BoxFit.cover,
                       ),
@@ -58,14 +59,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           AppText(
-                            text: 'Women’s Casual Wear',
+                            text: widget.cartdata.product?.title??'',
                             size: 14,
                             maxline: 2,
                             weight: FontWeight.w600,
                           ),
 
                           AppText(
-                            text: 'Checked Single-Breasted Blazer',
+                            text: widget.cartdata.product?.description??'',
                             size: 12,
                             maxline: 2,
                           ),
@@ -117,7 +118,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   child: Row(
                                     children: [
                                       AppText(
-                                        text: 'Qty : 1',
+                                        text: 'Qty : ${widget.cartdata.qty}',
                                         size: 10,
                                         color: ColorResources.BLACK,
                                       ),
@@ -173,7 +174,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppText(text: 'Order Amounts',size: 16, weight: FontWeight.w400,),
-                  AppText(text: '$rupesssymbol 6368',size: 16, weight: FontWeight.w600,), 
+                  AppText(text: '$rupesssymbol ${( widget.cartdata.product!.price!.toDouble())*(widget.cartdata.qty!.toDouble())}',size: 16, weight: FontWeight.w600,), 
                 ],
               ),
               gap,
@@ -199,7 +200,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppText(text: 'Order Total',size: 16, weight: FontWeight.w400,),
-                  AppText(text: '$rupesssymbol 6368',size: 16, weight: FontWeight.w600,), 
+                  AppText(text: '$rupesssymbol ${( widget.cartdata.product!.price!.toDouble())*(widget.cartdata.qty!.toDouble())}',size: 16, weight: FontWeight.w600,), 
                 ],
               ),gap,
               Row(
@@ -231,7 +232,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppText(text: '$rupesssymbol 6368',size: 16, weight: FontWeight.w600,),
+                    AppText(text: '$rupesssymbol ${( widget.cartdata.product!.price!.toDouble())*(widget.cartdata.qty!.toDouble())}',size: 16, weight: FontWeight.w600,),
                     AppText(text: 'View Details',size: 12, weight: FontWeight.w600,color: ColorResources.PRIMARYCOLOR,),
                   ],
                 ),
@@ -240,7 +241,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 child: ApBtn(
                   height: 40,
                   onPressed: () {
-                  Screen.open(context, PaymentScreen());
+                  Screen.open(context, PaymentScreen(paymentdata: widget.cartdata,));
                 }, isValid: true,child: AppText(text: 'Proceed to Payment',color: ColorResources.WHITE,),),
               )
             ],

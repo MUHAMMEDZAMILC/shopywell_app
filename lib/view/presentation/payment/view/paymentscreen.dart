@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopywell_app/core/helper/help_screensize.dart';
 import 'package:shopywell_app/core/utils/extension/upperfstring_ext.dart';
 import 'package:shopywell_app/core/utils/theme/colors.dart';
@@ -7,18 +8,27 @@ import 'package:shopywell_app/core/utils/theme/dimensions.dart';
 import 'package:shopywell_app/view/components/appbar.dart';
 import 'package:shopywell_app/view/components/appbutton.dart';
 import 'package:shopywell_app/view/components/appsvg.dart';
+import 'package:shopywell_app/view/presentation/cart/model/cart_model.dart';
+import 'package:shopywell_app/view/presentation/payment/viewmodel/bloc/payment_bloc.dart';
+import 'package:shopywell_app/view/presentation/profile/viewmodel/bloc/profile_bloc.dart';
 
 import '../../../../core/constants/strings.dart';
 import '../../../components/apptext.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key});
-
+   PaymentScreen({super.key,required this.paymentdata});
+  CartModel paymentdata;
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
+  @override
+  void initState() {
+    context.read<ProfileBloc>().add(ProfileInitEvent(context));
+    context.read<PaymentBloc>().add(PaymentInitEvent(context));
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +51,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     color: ColorResources.TEXTCOLORSUB,
                   ),
                   AppText(
-                    text: '$rupesssymbol 6368',
+                    text: '$rupesssymbol ${( widget.paymentdata.product!.price!.toDouble())*(widget.paymentdata.qty!.toDouble())}',
                     size: 18,
                     weight: FontWeight.w400,
                     color: ColorResources.TEXTCOLORSUB,
@@ -59,7 +69,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     color: ColorResources.TEXTCOLORSUB,
                   ),
                   AppText(
-                    text: '$rupesssymbol 6368',
+                    text: '$rupesssymbol 0.0',
                     size: 18,
                     weight: FontWeight.w400,
                     color: ColorResources.TEXTCOLORSUB,
@@ -72,7 +82,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 children: [
                   AppText(text: 'Total', size: 18, weight: FontWeight.w400),
                   AppText(
-                    text: '$rupesssymbol 6368',
+                    text:'$rupesssymbol ${( widget.paymentdata.product!.price!.toDouble())*(widget.paymentdata.qty!.toDouble())}',
                     size: 18,
                     weight: FontWeight.w400,
                   ),
@@ -118,33 +128,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
               Spacer(),
               ApBtn(
                 onPressed: () {
-                  showDialog(context: context, builder: (context) {
-                    return AlertDialog(
-                      backgroundColor: ColorResources.TRANSPARENT,
-                      contentPadding: EdgeInsets.zero,
-                      content: Stack(
-                        children: [
-                          AppSvg(assetName: paymentsuccpop),
-                          Positioned(
-                            right: 0,
-                            child: GestureDetector(
-                              onTap: () => Navigator.pop(context),
-                              child: Container(
-                               decoration: BoxDecoration(
-                                 color: ColorResources.WHITE,
-                                 boxShadow: ColorResources.defshadow,
-                              shape: BoxShape.circle),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(padding),
-                                  child: Icon(CupertinoIcons.clear, color: ColorResources.BTNRED,size: 18,),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },);
+                  context.read<PaymentBloc>().add(RazorPayEvent(context, ( widget.paymentdata.product!.price!.toDouble())*(widget.paymentdata.qty!.toDouble()), widget.paymentdata.product?.description, widget.paymentdata.product?.title));
+                 
                 },
                 isValid: true,
                 child: AppText(text: 'Continue', color: ColorResources.WHITE),
